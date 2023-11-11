@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from 'react';
+import Navbar from './Nav';
+import Home from './Home';
+import About from './About'
+import NewBlog from './NewBlog';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 function App() {
+  const [counter, setCounter] = useState(0)
+
+//npm install react-router-dom@5 was used to get what is needed for the import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className='App'>
+        <Navbar/>
+        <div className='content'>
+          <Switch>
+            <Route exact path = "/">
+              <Home/>
+            </Route>
+            <Route exact path = "/About">
+              <About />
+            </Route>
+            <Route exact path = "/New Blog">
+              <NewBlog />
+            </Route>
+          </Switch>
+        </div>
+      </div> 
+    </Router> 
   );
 }
 
